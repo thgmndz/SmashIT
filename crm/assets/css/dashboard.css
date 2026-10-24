@@ -1,0 +1,371 @@
+:root {
+    --sidebar-width: 260px;
+    --sidebar-bg: #000000;
+    --sidebar-active-bg: #e28743;
+    --primary-color: #e28743;
+    --secondary-color: #111111;
+    --background-color: #000000;
+    --card-bg: #0c0c0c;
+    --text-color: #ffffff;
+    --text-muted: #dcdcdc;
+}
+
+body {
+    font-family: 'Outfit', 'Inter', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+    background: rgba(12, 12, 12, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+}
+
+/* Sidebar Styling */
+#sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: var(--sidebar-bg);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    overflow-y: auto;
+}
+
+#sidebar.collapsed {
+    left: calc(var(--sidebar-width) * -1);
+}
+
+.sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+}
+
+.sidebar-header img {
+    max-height: 45px;
+}
+
+.sidebar-menu {
+    padding: 20px 0;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    padding: 12px 25px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-left: 4px solid transparent;
+}
+
+.sidebar-menu a i {
+    margin-right: 15px;
+    font-size: 18px;
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar-menu a:hover {
+    color: var(--text-color);
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.sidebar-menu a.active {
+    color: #fff;
+    background-color: rgba(226, 135, 67, 0.15);
+    border-left-color: var(--primary-color);
+}
+
+/* Main Content area */
+#main-content {
+    margin-left: var(--sidebar-width);
+    min-height: 100vh;
+    padding: 30px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#main-content.expanded {
+    margin-left: 0;
+}
+
+/* Header & Navbar */
+.navbar-crm {
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 30px;
+}
+
+.toggle-sidebar-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Cards & Stats */
+.stat-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.bg-primary-soft {
+    background-color: rgba(226, 135, 67, 0.15);
+    color: var(--primary-color);
+}
+
+.bg-success-soft {
+    background-color: rgba(40, 167, 69, 0.15);
+    color: #28a745;
+}
+
+.bg-info-soft {
+    background-color: rgba(23, 162, 184, 0.15);
+    color: #17a2b8;
+}
+
+.bg-warning-soft {
+    background-color: rgba(255, 193, 7, 0.15);
+    color: #ffc107;
+}
+
+/* Tables and Lists */
+.custom-table {
+    color: var(--text-color) !important;
+}
+
+.custom-table th {
+    background-color: rgba(255, 255, 255, 0.02) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: var(--text-muted) !important;
+    font-weight: 600;
+}
+
+.custom-table td {
+    background-color: transparent !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    vertical-align: middle;
+}
+
+/* Custom form styling */
+.form-control-crm {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    border-radius: 8px;
+    padding: 10px 15px;
+}
+
+.form-control-crm:focus {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: var(--primary-color);
+    color: var(--text-color);
+    box-shadow: 0 0 0 0.25rem rgba(226, 135, 67, 0.25);
+}
+
+.btn-crm-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.btn-crm-primary:hover {
+    background-color: #d17531;
+    border-color: #d17531;
+    color: #fff;
+}
+
+/* Login Page custom styling */
+.login-bg {
+    background: radial-gradient(circle at center, #1b1b2d 0%, #0d0d15 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 40px;
+    border-radius: 16px;
+}
+
+/* Responsive sidebar */
+@media (max-width: 991.98px) {
+    #sidebar {
+        left: calc(var(--sidebar-width) * -1);
+    }
+    #sidebar.show {
+        left: 0;
+    }
+    #main-content {
+        margin-left: 0 !important;
+    }
+}
+
+/* Forzar que todos los textos grises y oscuros sean blancos (excepto badges y botones) */
+body, 
+p, 
+span:not(.badge):not(.alert), 
+h1, h2, h3, h4, h5, h6, 
+label, 
+.table, 
+.table td, 
+.table th, 
+td, 
+th, 
+.form-control, 
+.form-select, 
+.form-text, 
+.modal-content, 
+.modal-body, 
+.modal-header, 
+.modal-footer {
+    color: #ffffff !important;
+}
+
+.sidebar-menu a.active {
+    color: var(--primary-color) !important;
+}
+
+select option {
+    background-color: #121212 !important;
+    color: #ffffff !important;
+}
+
+/* Light Theme Styling & Variable Overrides */
+body.light-theme {
+    --sidebar-bg: #ffffff;
+    --background-color: #f1f3f5;
+    --card-bg: #ffffff;
+    --text-color: #212529;
+    --text-muted: #495057;
+    --secondary-color: #e9ecef;
+}
+
+body.light-theme,
+body.light-theme p,
+body.light-theme span:not(.badge):not(.alert),
+body.light-theme h1, body.light-theme h2, body.light-theme h3, body.light-theme h4, body.light-theme h5, body.light-theme h6,
+body.light-theme label,
+body.light-theme .table,
+body.light-theme .table td,
+body.light-theme .table th,
+body.light-theme td,
+body.light-theme th,
+body.light-theme .form-control,
+body.light-theme .form-select,
+body.light-theme .form-text,
+body.light-theme .modal-content,
+body.light-theme .modal-body,
+body.light-theme .modal-header,
+body.light-theme .modal-footer {
+    color: #212529 !important;
+}
+
+body.light-theme .glass-panel {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+body.light-theme #sidebar {
+    background-color: var(--sidebar-bg) !important;
+    border-right: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+body.light-theme .sidebar-menu a {
+    color: #495057 !important;
+}
+
+body.light-theme .sidebar-menu a:hover {
+    color: #212529 !important;
+    background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+body.light-theme .sidebar-menu a.active {
+    background-color: rgba(226, 135, 67, 0.1) !important;
+    color: var(--primary-color) !important;
+}
+
+body.light-theme .custom-table th {
+    background-color: rgba(0, 0, 0, 0.02) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    color: #495057 !important;
+}
+
+body.light-theme .custom-table td {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+body.light-theme .form-control-crm {
+    background-color: rgba(0, 0, 0, 0.02) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    color: #212529 !important;
+}
+
+body.light-theme select option {
+    background-color: #ffffff !important;
+    color: #212529 !important;
+}
+
+body.light-theme .modal-content {
+    background-color: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+body.light-theme .btn-close {
+    filter: none !important;
+}
+
+/* Toggle between light and dark logo versions depending on active theme */
+body.light-theme .logo-dark {
+    display: none !important;
+}
+body.light-theme .logo-light {
+    display: inline-block !important;
+}
+
+/* Fix visibility of text-white titles and product names in light theme */
+body.light-theme .font-weight-semibold.text-white,
+body.light-theme .font-weight-bold.text-white,
+body.light-theme h2.text-white {
+    color: #212529 !important;
+}
+
